@@ -8,13 +8,22 @@
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
 
   <script type="module">
+    // Shorthand!
+    // Docs: https://reactjs.org/docs/react-without-jsx.html
+    const e = React.createElement
     // Cache a reference to the root element
     const rootElement = document.getElementById('root')
 
+    const helloElement = e('span', {children: 'Hello'})
+    const worldElement = e('span', {children: 'World'})
+
     // Create a new element of the following type with these props
-    const elementProps = {className: 'container', children: 'Hello world!'}
+    const elementProps = {
+      className: 'container',
+      children: [helloElement, worldElement]
+    }
     const elementType = 'div'
-    const reactElement = React.createElement(elementType, elementProps)
+    const reactElement = e(elementType, elementProps)
 
     // Create a new root with ReactDOM against the root element
     const root = ReactDOM.createRoot(rootElement)
